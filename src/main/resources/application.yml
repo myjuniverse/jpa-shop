@@ -1,19 +1,19 @@
 spring:
   datasource:
-    url: jdbc:h2:tcp://localhost/~/jpashop
-    username: sa
-    password:
-    driver-class-name: org.h2.Driver
+    url: jdbc:postgresql://localhost:5432/jpa  # DB 이름에 맞게 수정
+    username: postgres                         # 사용 중인 사용자명
+    password: 1234                             # 사용자 비밀번호
+    driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update  # 또는 update (데이터 유지 원하면 update 권장)
     properties:
       hibernate:
-        #        show_sql: true
         format_sql: true
 
-logging.level:
-  org.hibernate.SQL: debug
-#  org.hibernate.type: trace #스프링 부트 2.x, hibernate5
-#  org.hibernate.orm.jdbc.bind: trace #스프링 부트 3.x, hibernate6
+logging:
+  level:
+    org.hibernate.SQL: debug
+    # org.hibernate.type: trace        # 스프링 부트 2.x, Hibernate 5
+    org.hibernate.orm.jdbc.bind: trace # 스프링 부트 3.x, Hibernate 6
